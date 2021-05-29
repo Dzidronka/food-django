@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+
+            <header class="post-header">
+                <div class="title">{{ product.product_name }}</div>
+                {% if product.created_date %}
+                    <time class="date-header">  {{ product.created_date }}</time>
+                {% else %}
+                    <a class="more-button" href="{% url 'product_publish' pk=product.pk %}">Publish</a>
+                {% endif %}
+            </header>
+            <div class="product-container">
+                {% if product.product_image %}
+                    <img class="article-image" src="{{ product.product_image.url }}" alt="">
+                {% endif %}
+
+                <table class="nutrition-table">
+                    <thead>
+                    <tr class="nutrition-table-title-row">
+                        <th class="nutrition-table-title" colspan="4">Nutritional Information</th>
+                    </tr>
+                    <tr>
+                        <th class="serving-size" colspan="2">Serving size: {{ product.weight }}</th>
+                        <th class="serving-size"></th>
+                        <th class="serving-size"></th>
+                    </tr>
+                    <tr class="nutrition-table-heading-row">
+                        <th colspan="2">Amount</th>
+                        <th>Per Serv</th>
+                        <th>Per 100 g/mL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="padrow">
+                        <td colspan="4">&nbsp;</td>
+                    </tr>
+                    <tr class="nutrition-table-information-row">
+                        <td colspan="2">Energy</td>
+                        <td>{{ product.calories }}</td>
+                        <td>{{ product.calories_per100 }}</td>
+                    </tr>
+                    <tr class="nutrition-table-information-row">
+                        <td colspan="2">Protein</td>
+                        <td>{{ product.proteins }}</td>
+                        <td>{{ product.proteins_per100 }}</td>
+                    </tr>
+                    <tr class="nutrition-table-information-row">
+                        <td colspan="2">Fat</td>
+                        <td>{{ product.fat }}</td>
+                        <td>{{ product.fat_per100 }}</td>
+                    </tr>
+                    <tr class="nutrition-table-information-row">
+                        <td colspan="2">Carbohydrate</td>
+                        <td>{{ product.carbohydrates }}</td>
+                        <td>{{ product.calories_per100 }}</td>
+                    </tr>
+                    <tr class="nutrition-table-information-row">
+                        <td colspan="2">Sodium</td>
+                        <td>{{ product.salt }}</td>
+                        <td>{{ product.salt_per100 }}</td>
+                    </tr>
+                    <tr class="nutrition-table-information-row">
+                        <td colspan="2">Fibre</td>
+                        <td>{{ product.fibre }}</td>
+                        <td>{{ product.fibre_per100 }}</td>
+                    </tr>
+                    <tr class="padrow">
+                        <td colspan="4">&nbsp</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+            {% if product.product_type == "2" %}
+                <div class="additional-information">
+                    <span class="product-labels">Produced By: </span>
+                    <p class="product-description">{{ product.produced_by }}</p>
+                    <span class="product-labels">Ingredients: </span>
+                    <p class="product-description">{{ product.ingredients }}</p>
+                </div>
+            {% endif %}
+            {% if product.additional_image %}
+                <img class="article-image" src="{{ product.additional_image.url }}" alt="">
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+                <a class="more-button" href="{% url 'product_edit' pk=product.pk %}">Edit product<span
+                        style="padding-left: 5px"
+                        class="glyphicon glyphicon-pencil"></span></a>
+                <a class="more-button" href="{% url 'product_remove' pk=product.pk %}">Remove product<span
+                        style="padding-left: 5px"
+                        class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+            <a class="more-button" href="{% url 'add_comment' pk=product.pk %}">Add your comment below!</a>
+            {% for comment in product.comments.all %}
+                <div class="comment">
+                    <div class="date">
+                        {{ comment.created_date }}
+                    </div>
+                    <div class="comment-item comment-section">
+                        <h4 class="comment-username">{{ comment.author }}</h4>
+                        <p class="comment-post">{{ comment.text|linebreaks }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="footer-message">No comments here yet :(</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

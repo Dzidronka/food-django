@@ -1,0 +1,399 @@
+.mt-20 {
+    margin-top: 20px;
+}
+
+body {
+    font-family: georgia, "times new roman", serif;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+/* Navbar */
+.site-logo {
+    opacity: 0.8;
+    width: 100%;
+    height: 35%;
+    background-image: url("/media/images/main/navbar.jpg");
+    margin-bottom: 20px;
+    padding-top: 12vw;
+}
+
+
+.topnav {
+    position: sticky;
+    top: 0%;
+    z-index: 1;
+    background-color: white;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.3em;
+}
+
+.topnav a:hover {
+    background-color: lightgray;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+html, body, #container {
+    height: 100%;
+}
+
+.logo {
+    float: left;
+    margin-left: 28px;
+    font-size: 1.5em !important;
+    height: 60px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.welcome {
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 45px;
+}
+
+.search-bar {
+    line-height: 30px;
+    border-radius: 3px;
+    float: right;
+    margin-top: 1vw;
+}
+
+.content {
+    margin-left: 40px
+}
+
+.date {
+    color: #7ba9c4;
+    font-family: 'Zilla Slab', serif;
+    font-size: 12px;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+/*post list*/
+
+.post-container {
+    background: #eee;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    display: grid;
+}
+
+.post-title {
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.post {
+    overflow: hidden;
+    background-color: #eee;
+    padding: 30px 50px 20px 50px;
+}
+
+.miniature-photo {
+    width: 20vw;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.side-bar {
+    padding-top: 25px;
+    color: rgb(28, 121, 184);
+}
+
+.page-footer {
+    position: absolute;
+    left: 0;
+    bottom: -150px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.about-post {
+    overflow: hidden;
+    background-color: #eee;
+    padding: 55px 70px 50px 70px;
+}
+
+.post-footer {
+    padding-top: 30px;
+    --max-lines: 3;
+    overflow: hidden;
+    background-color: #eee;
+    font-style: italic;
+}
+
+.article-image {
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(2, 32vw);
+    grid-gap: 5vw;
+    margin-bottom: 5vw;
+}
+
+.more-button {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 3px;
+    background-color: black;
+    color: #fff !important;
+    text-decoration: none;
+    font-style: normal;
+    border: black;
+}
+
+.post-header {
+    border: 2px solid black;
+    border-left: 0;
+    margin-bottom: 45px;
+    padding: 40px 20px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.title {
+    font-size: 2.6rem;
+}
+
+time {
+    background-color: white;
+    bottom: 100%;
+    color: black;
+    left: 0;
+    margin-bottom: -0.25em;
+    padding: 0 0.5em 0 0;
+    position: absolute;
+}
+
+.post-text {
+    line-height: 30px;
+    margin: 0;
+    text-align: justify;
+}
+
+.post-text:first-of-type::first-letter {
+    color: black;
+    float: left;
+    font-size: 6.854rem;
+    line-height: 1;
+    margin-right: 0.125em;
+    margin-top: -0.4em;
+    transform: translateY(0.18em);
+    width: 100%;
+}
+
+.post h1, h1 a, .post h1 a:visited {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 0;
+    margin-left: 40px;
+}
+
+h2 a {
+    color: #a7b3ba;
+    font-size: 24px
+}
+
+.comment {
+    margin: 20px 0 20px 20px;
+    font-family: 'Zilla Slab', sans-serif;
+    font-size: 12px
+}
+
+.footer {
+    background: #aeaeaf;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+
+.footer a {
+    font-size: 25px;
+    padding: 10px;
+    border-right: 1px solid #70726F;
+    transition: all .5s ease;
+}
+
+.footer a:first-child {
+    border-left: 1px solid #70726F;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.footer-message {
+    font-style: italic;
+    margin-bottom: 50px !important;
+}
+
+/*comments*/
+
+.comment-section {
+    width: 100%;
+    min-height: 100px;
+    order: 5;
+    margin: 20px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: Century Gothic, sans-serif;
+    color: #455a64;
+}
+
+.comment-item {
+    width: 100%;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.comment-username,
+.comment-post {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.button-section {
+    text-decoration: underline;
+    margin-right: 10px;
+    margin-left: auto;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* NUTRITIONS */
+
+.nutrition-table {
+    text-align: left;
+    border: 3px solid dimgrey;
+    border-right: 0;
+    border-left: 0;
+    border-collapse: collapse;
+    font-weight: 400;
+    color: dimgrey;
+}
+
+.nutrition-table .nutrition-table-title {
+    text-transform: uppercase;
+    font-size: 1.4em;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.nutrition-table tr th,
+.nutrition-table tbody {
+    padding-top: 0.55em;
+    padding-bottom: 0.55em;
+    border-bottom: 2px solid dimgrey;
+}
+
+.nutrition-table-heading-row,
+.nutrition-table-information-row,
+.servings-per-container {
+    text-align: right;
+}
+
+th:first-child,
+td:first-child {
+    text-align: left;
+}
+
+th:not(:first-child) {
+    padding-left: 1.4em;
+}
+
+.nutrition-table-information-row td {
+    padding-bottom: 0.26em;
+}
+
+.padrow td {
+    font-size: 0.9em;
+}
+
+.additional-information {
+    margin-bottom: 10vw;
+}
+
+.product-labels {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.product-description {
+    font-size: 1.2em;
+    padding: 1vw;
+}
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 1000px) {
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .search-bar {
+        float: left !important;
+    }
+}

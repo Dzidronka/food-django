@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-8">
+        {% for product in products %}
+            <div class="post-container">
+                <div class="post">
+                    <span class="post-title"><a
+                            href="{% url 'product_detail' pk=product.pk %}">{{ product.product_name }}</a></span>
+                    <img class="article-image" src="{{ product.product_image.url }}" alt="Product">
+                </div>
+                <div class="post-footer">
+                    Published: {{ product.created_date }}
+                    Author: {{ product.author }}
+                </div>
+                <div id="tags" class="post-footer">
+                    Tags:
+                    {% for tag in product.tags.all %}
+                        #{{ tag }}
+                    {% endfor %}
+                </div>
+                <div class="post-footer">
+                    {% if product.approved_comments.count > 0 %}
+                        <a href="{% url 'product_detail' pk=product.pk %}"
+                           class="comment">Comments: {{ product.approved_comments.count }}</a>
+                    {% else %}
+                        <p>No comments here yet :(</p>
+                    {% endif %}
+                </div>
+                <div class="post-footer"><a class="more-button" href="{% url 'product_detail' pk=product.pk %}">Read
+                    More
+                    >></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <h2 class="post-title side-bar">Best products:</h2>
+        <div class="miniatures">
+            {% for product in products %}
+                {% if product.miniature_image %}
+                    <a href="{% url 'product_detail' pk=product.pk %}">
+                        <img class="miniature-photo" src="{{ product.miniature_image.url }}" alt="">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            {% for product in products %}
+                {% for tag in product.tags.all|dictsort:"slug" %}
+                    {% ifchanged %}
+                        <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-info">#{{ tag }}</a>
+                    {% endifchanged %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <!-- Pagination -->
+        {% if products.has_other_pages %}
+            <ul class="pagination">
+                {% if products.has_previous %}
+                    <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if products.has_next %}
+                    <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+            </div>
+        {% endif %}
+{% endblock content %}
